@@ -1,0 +1,115 @@
+{% load static %}
+<html>
+    <head>
+      <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    </head>
+    <style>
+        #result{
+          visibility:hidden;
+         
+        }
+        body{
+          margin:0;
+          padding:0;
+          font-family:'Ubuntu',sans-serif
+          }
+          #main{
+            width:900px;
+            height:30px;
+            margin: 3% 3% 3% 30%;
+            
+          }
+          #first{
+            width:400px;
+            height:650px;
+            box-shadow:0 0 0 1px rgba(14,41,57,0.12),0 2px 5px rgba(14,41,57,0.44),inset 0 -1px 2px rgba(14,41,57,0.15);
+            float:left;
+            padding:10px 30px 0;
+            background:linear-gradient(#fff,#f2f6f9)
+          }
+          hr{
+          border:0;
+          border-top:1px solid #ccc;
+          margin-bottom:30px
+          }
+          label{
+          font-size:14px
+          }
+          input{
+          width:400px;
+          padding:10px;
+          margin-top:2px;
+          margin-bottom:15px;
+          border-radius:5px;
+          border:1px solid #cbcbcb;
+          box-shadow:inset 0 1px 2px rgba(0,0,0,0.18);
+          font-size:15px
+          }
+          textarea{
+          width:350px;
+          height:40px;
+          padding:6px;
+          margin-top:8px;
+          margin-bottom:30px;
+          border-radius:5px;
+          border:1px solid #cbcbcb;
+          box-shadow:inset 0 1px 2px rgba(0,0,0,0.18);
+          font-size:14px
+          }
+          input[type=submit]{
+          background:linear-gradient(to bottom,#22abe9 5%,#36caf0 100%);
+          box-shadow:inset 0 1px 0 0 #7bdcf4;
+          border:1px solid #0F799E;
+          color:#fff;
+          font-size:19px;
+          font-weight:500;
+          cursor:pointer;
+          text-shadow:0 1px 0 #13506D
+          }
+          input[type=submit]:hover{
+          background:linear-gradient(to bottom,#36caf0 5%,#22abe9 100%)
+          }
+
+
+    </style>
+    <body>
+          <body>
+          <div id="main">
+          <div id="first">
+          <form action="" method="post">
+            <h1>Employee Form</h1>
+            {% csrf_token %}
+            <!--{{ form1.non_field_errors }} -->
+            {{ form1.errors }}
+              <label for="html">First Name: </label>{{form1.first_name}}<br/>
+              <label for="html">Last Name: </label>{{form1.last_name}}<br/>
+              <label for="html">Email: </label>{{form1.email}}<br/>
+              <label for="html">Phone: </label>{{form1.phone_no}}<br/>
+              <label for="html">Salary: </label>{{form1.salary}}<br/>
+              <p id="source" onchange="myFunction();">
+              <label for ='html'>Department: </label>{{form1.depart_ment}}
+              </p>
+              <span id = "result" ><label> New Department: </label>{{form2.Department_name}}</span>
+              <br/>          
+              <input type="submit" value= "submit" >
+              </form>
+          </div>
+          </div>
+          <p style="text-indent:100px"><a href="/display">All Details</a></p>
+
+    </div>
+    <script>
+        function myFunction() {
+            var str = document.getElementById('id_depart_ment').value;
+            console.log(str);
+            if (str =='other'){
+              document.getElementById("result").style.visibility = 'visible';
+            }
+            else{
+              document.getElementById("result").style.visibility = 'visible';
+            }
+        }
+    </script>
+
+    </body>
+</html>
